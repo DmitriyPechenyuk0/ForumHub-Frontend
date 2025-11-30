@@ -14,7 +14,7 @@ export function Main(props: {page: string}){
     } else{
         return(
             <main className={styles.main}>
-                <div className={styles.centeredContent}>
+                <div className={styles.centeredContentRow}>
                     <PostList></PostList>
                     <Parameters></Parameters>
                 </div>

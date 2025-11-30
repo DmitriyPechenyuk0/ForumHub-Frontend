@@ -40,6 +40,11 @@
     left: 10px;
     top: 10px;
 }
+.ParamsSide{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 .Params{
     display: flex;
     padding: 10px;
@@ -53,15 +58,12 @@
     width: 380px;
 }
 .Params > p{
-    display: flex;
-    padding: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    align-self: stretch;
-    border-radius: 8px;
-    border: 1px solid #27272A;
-    background: #1A1A2E;
+    color: #A1A1AA;
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 .Params > div{
     display: flex;
@@ -80,6 +82,7 @@
     align-items: center;
     gap: 20px;
     align-self: stretch;
+    position: relative;
 }
 .tagsTopBar > div{
     display: flex;
@@ -94,7 +97,56 @@
     font-weight: 500;
     line-height: normal;
 }
+.tagsTopBar > div > input{
+    display: flex;
+    height: 26px;
+    padding: 10px;
+    padding-left: 36px;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    border-radius: 4px;
+    border: 1px solid #27272A;
+    background: #1A1A2E;
+    width: 260px;
+    outline: none;
+}
 .smallLoupe{
+    position: absolute;
     width: 16px;
     height: 16px;
+    left: 96px;
+    top: 10px;
+}
+.TagDiv{
+    display: flex;
+    height: 29px;
+    padding: 2px;
+    align-items: center;
+    gap: 5px;
+    min-width: 168.1px;
+}
+.TagsDiv{
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+.TagsDiv::-webkit-scrollbar{
+    display: none;
+}
+.TagDiv > p{
+    color: #A1A1AA;
+    font-family: Ubuntu;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.TagDiv > img{
+    cursor: pointer;
 }

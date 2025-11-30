@@ -4,7 +4,7 @@ import { PostCard } from './PostCard'
 
 interface ITag{
     id: number
-    name: string
+    title: string
 }
 
 export interface Post{
@@ -21,15 +21,23 @@ export interface PostStr{
     tags: string,
     likes?: string
 }
-const Tags: ITag[] = [
-  { id: 1, name: 'JavaScript'},
-  { id: 2, name: 'idk'},
-  { id: 3, name: 'Ruby'},
-  { id: 4, name: 'C#'},
-  { id: 5, name: 'HolyC'},
-  { id: 6, name: 'Kotlin'},
-  { id: 7, name: 'Bash'},
-  { id: 8, name: 'C++'},
+export const Tags: ITag[] = [
+    { id: 1, title: 'JavaScript'},
+    { id: 2, title: 'idk'},
+    { id: 3, title: 'Ruby'},
+    { id: 4, title: 'C#'},
+    { id: 5, title: 'HolyC'},
+    { id: 6, title: 'Kotlin'},
+    { id: 7, title: 'Bash'},
+    { id: 8, title: 'C++'},
+    { id: 9, title: 'JavaScript'},
+    { id: 10, title: 'idk'},
+    { id: 11, title: 'Ruby'},
+    { id: 12, title: 'C#'},
+    { id: 13, title: 'HolyC'},
+    { id: 14, title: 'Kotlin'},
+    { id: 15, title: 'Bash'},
+    { id: 16, title: 'C++'},
 ]
 
 const posts: Post[] = [
