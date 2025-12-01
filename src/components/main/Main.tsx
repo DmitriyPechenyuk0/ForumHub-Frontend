@@ -1,8 +1,22 @@
-import styles from './css/main.module.css'
-import { Parameters } from './Posts/Parameters'
-import { PostList } from './Posts/PostList'
-export function Main(props: {page: string}){
-    if (props.page == '/'){
+import styles from './main.module.css'
+import { Parameters } from '../Posts/Parameters'
+import { PostList } from '../Posts/PostList'
+import { ReactNode } from 'react'
+
+interface MainProps {
+    // children - специальный проп(необязательно передавать его как атрибут у компонента),
+    // позволяет принять контент(от родителя), который мы указываем между открывающим и закрывающим тегом
+    // Контент имеет строго тип ReactNode, что является любым тегом/компонентом/текстовым узлом и тд
+    // Проп можно сделать необязательным
+    children?: ReactNode
+    page: string
+}
+
+export function Main(props: MainProps){
+    
+    const {page, children} = props
+
+    if (page == '/'){
         return(
             <main className={styles.main}>
                 <div className={styles.centeredContent}>

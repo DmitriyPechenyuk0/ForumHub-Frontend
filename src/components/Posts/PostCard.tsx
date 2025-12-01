@@ -1,8 +1,8 @@
 import styles from './css/postCard.module.css'
 import { Post, PostStr } from './PostList'
-import TagIcon from '../assets/svg/Tag.svg';
-import LikeIcon from '../assets/svg/Like.svg';
-import PostIcon from '../assets/svg/Dnipro.svg';
+import TagIcon from '../../assets/svg/Tag.svg';
+import LikeIcon from '../../assets/svg/Like.svg';
+import PostIcon from '../../assets/svg/Dnipro.svg';
 
 export function PostCard(props: PostStr){
     return (

@@ -1,10 +1,10 @@
 import pstyles from './css/postParameters.module.css'
-import LoupeIcon from '../assets/svg/loupe.svg';
-import TagIcon from '../assets/svg/Tag.svg';
-import LikeIcon from '../assets/svg/Like.svg'
+import LoupeIcon from '../../assets/svg/loupe.svg';
+import TagIcon from '../../assets/svg/Tag.svg';
+import LikeIcon from '../../assets/svg/Like.svg'
 import { Tags } from './PostList';
-import unfilledCheckbox from '../assets/svg/unfilledcheckbox.svg'
-import radioButtonIcon from '../assets/svg/radio.svg'
+import unfilledCheckbox from '../../assets/svg/unfilledcheckbox.svg'
+import radioButtonIcon from '../../assets/svg/radio.svg'
 
 export function DisplayTags(props: {id: number, title: string}){
     const {title, id} = props

@@ -1,7 +1,7 @@
-import styles from './css/header.module.css'
-import logo from './assets/svg/Logo.svg';
-import UAFlag from './assets/svg/Flag_of_Ukraine.svg';
-import downArrow from './assets/svg/arrow down.svg';
+import styles from './header.module.css'
+import logo from '../../assets/svg/Logo.svg';
+import UAFlag from '../../assets/svg/Flag_of_Ukraine.svg';
+import downArrow from '../../assets/svg/arrow down.svg';
 
 export function Header(){
     return(
