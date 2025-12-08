@@ -4,14 +4,29 @@ import TagIcon from '../../assets/svg/Tag.svg';
 import LikeIcon from '../../assets/svg/Like.svg'
 import { tags } from './PostList';
 import unfilledCheckbox from '../../assets/svg/unfilledcheckbox.svg'
+import filledCheckbox from '../../assets/svg/filledcheckbox.svg'
 import radioButtonIcon from '../../assets/svg/radio.svg'
 
-export function DisplayTags(props: {id: number, title: string}){
-    const {title, id} = props
+interface IDisplayTags{
+    id: number
+    title: string
+    isSelected: boolean
+    onToggle: (id: number) => void
+}
+
+export function DisplayTags(props: IDisplayTags){
+    const {title, id, isSelected, onToggle} = props
     return (
-    <div className={pstyles.TagDiv}>
-        <input className={pstyles.displaynone} type="checkbox" name="" id={`tagcheck_${id}`} />
-        <img src={unfilledCheckbox} id={`tagimg_${id}`} />
+    <div 
+        className={pstyles.TagDiv}
+        onClick={() => onToggle(id)}
+        >
+        <input className={pstyles.displaynone} type="checkbox" name="" id={`tagcheck_${id}`} checked={isSelected} />
+        <img
+            src={isSelected ? filledCheckbox : unfilledCheckbox} 
+            id={`tagimg_${id}`}
+            
+        />
         <p>{title}</p>
     </div>)
 }
@@ -26,6 +41,14 @@ interface IParameters {
 
 
 export function Parameters(props: IParameters){
+    const toggleTag = (tagId: number) => {
+        if (props.selectedTags.includes(tagId)) {
+            props.setSelectedTags(props.selectedTags.filter(id => id !== tagId))
+        } else {
+            props.setSelectedTags([...props.selectedTags, tagId])
+        }
+    }
+    
     return (
         <div className= {pstyles.ParamsSide}>
             <div className={pstyles.mainParametersDiv}>
@@ -54,9 +77,18 @@ export function Parameters(props: IParameters){
                     </div>
                     <div className={pstyles.TagsDiv}>
                         {tags.map((tag) => {
-                            return <div>
-                                {DisplayTags(tag)}
-                            </div>
+                            
+                            return (
+                                <div>
+                                    {<DisplayTags
+                                    key={tag.id}
+                                    id={tag.id}
+                                    title={tag.title}
+                                    isSelected={props.selectedTags.includes(tag.id)}
+                                    onToggle={toggleTag}
+                                />}
+                                </div>
+                            )
                         })}
                         
                     </div>
