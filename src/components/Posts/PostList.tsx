@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import styles from './css/postList.module.css'
 import { PostCard } from './PostCard'
 
@@ -8,6 +9,7 @@ interface ITag{
 }
 
 export interface Post{
+    id: number,
     title: string,
     shortDescription: string,
     image: string,
@@ -21,7 +23,7 @@ export interface PostStr{
     tags: string,
     likes?: string
 }
-export const Tags: ITag[] = [
+export const tags: ITag[] = [
     { id: 1, title: 'JavaScript'},
     { id: 2, title: 'idk'},
     { id: 3, title: 'Ruby'},
@@ -40,23 +42,45 @@ export const Tags: ITag[] = [
     { id: 16, title: 'C++'},
 ]
 
-const posts: Post[] = [
+export const posts: Post[] = [
     {
+        id: 1,
         title:'Cologne Boulevard at night',
         shortDescription: 'Cologne Boulevard is a boulevard in the center of Dnipro city, running between Dmitry Yavornytsky Avenue and Taras Shevchenko Street. The boulevard marks the border between the Shevchenko and Soborny districts of the city. It was created in 2004 by separating it from Ispolkomovskaya Street.',
         image: '123',
         tags: ['idk', 'lol']
     }
 ]
+interface IPostList{
+    searchValue: string
+    selectedTags: number[]
+    likesMinimumValue: number
+}
 
-export function PostList(){
+export function PostList(props: IPostList){
+    const [postArray, setPostArray] = useState<Post[]>(posts)
+
+    useEffect(() => {
+        const foundedPosts = posts.filter(post => {
+            return post.title.toLowerCase().includes(props.searchValue.toLowerCase())
+        })
+        
+        setPostArray(foundedPosts)
+
+    }, [props.searchValue])
     return (
 
         <div className={styles.listOfPosts} >
             <div>
-                {posts.map(
-                    (post) => {
-                        return <PostCard title = {post.title} shortDescription={post.shortDescription} image={post.image} tags={post.tags.join(', ')}></PostCard>
+                {postArray.map(
+                    post => {
+                        return <PostCard 
+                        
+                        key={post.id}
+                        title = {post.title}
+                        shortDescription={post.shortDescription}
+                        image={post.image}
+                        tags={post.tags.join(', ')}></PostCard>
                     }
                 )}
             </div>

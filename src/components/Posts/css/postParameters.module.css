@@ -203,3 +203,6 @@
     height: fit-content;
     cursor: pointer;
 }
+.displaynone{
+    display: none;
+}

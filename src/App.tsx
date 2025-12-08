@@ -6,7 +6,7 @@ export function App() {
     return (
         <>
             <Header></Header>
-            <Main page="" ></Main>
+            <Main></Main>
             <Footer></Footer>
         </>
     )

@@ -2,7 +2,7 @@ import pstyles from './css/postParameters.module.css'
 import LoupeIcon from '../../assets/svg/loupe.svg';
 import TagIcon from '../../assets/svg/Tag.svg';
 import LikeIcon from '../../assets/svg/Like.svg'
-import { Tags } from './PostList';
+import { tags } from './PostList';
 import unfilledCheckbox from '../../assets/svg/unfilledcheckbox.svg'
 import radioButtonIcon from '../../assets/svg/radio.svg'
 
@@ -10,16 +10,32 @@ export function DisplayTags(props: {id: number, title: string}){
     const {title, id} = props
     return (
     <div className={pstyles.TagDiv}>
-        <img src={unfilledCheckbox}/>
+        <input className={pstyles.displaynone} type="checkbox" name="" id={`tagcheck_${id}`} />
+        <img src={unfilledCheckbox} id={`tagimg_${id}`} />
         <p>{title}</p>
     </div>)
 }
-export function Parameters(){
+interface IParameters {
+    searchValue: string
+    setSearchValue: (value: string) => void
+    selectedTags: number[]
+    setSelectedTags: (tags: number[]) => void
+    likesMinimumValue: number
+    setLikesMinimumValue: (value: number) => void
+}
+
+
+export function Parameters(props: IParameters){
     return (
         <div className= {pstyles.ParamsSide}>
             <div className={pstyles.mainParametersDiv}>
                 <img src={LoupeIcon} alt="loupe" />
-                <input type="text" placeholder='Enter search query' />
+                <input 
+                    type="text"
+                    placeholder='Enter search query'
+                    value={props.searchValue}
+                    onChange={(e) => {console.log(e.target.value); props.setSearchValue(e.target.value)}}   
+                />
             </div>
             <div className={pstyles.Params} >
                 <p>Search by parameters</p>
@@ -31,11 +47,13 @@ export function Parameters(){
                         </div>
                         <div>
                             <img className={pstyles.smallLoupe} src={LoupeIcon}/>
-                            <input type="text" />
+                            <input 
+                                type="text"
+                            />
                         </div>
                     </div>
                     <div className={pstyles.TagsDiv}>
-                        {Tags.map((tag) => {
+                        {tags.map((tag) => {
                             return <div>
                                 {DisplayTags(tag)}
                             </div>

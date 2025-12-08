@@ -2,6 +2,7 @@ import styles from './main.module.css'
 import { Parameters } from '../Posts/Parameters'
 import { PostList } from '../Posts/PostList'
 import { ReactNode } from 'react'
+import { PostMain } from '../Posts/PostMain'
 
 interface MainProps {
     // children - специальный проп(необязательно передавать его как атрибут у компонента),
@@ -9,32 +10,30 @@ interface MainProps {
     // Контент имеет строго тип ReactNode, что является любым тегом/компонентом/текстовым узлом и тд
     // Проп можно сделать необязательным
     children?: ReactNode
-    page: string
 }
 
 export function Main(props: MainProps){
     
-    const {page, children} = props
+    const {children} = props
 
-    if (page == '/'){
-        return(
-            <main className={styles.main}>
-                <div className={styles.centeredContent}>
-                    <MainMessage></MainMessage>
-                    <Technologia></Technologia>
-                </div>
-            </main>
-        )
-    } else{
-        return(
-            <main className={styles.main}>
-                <div className={styles.centeredContentRow}>
-                    <PostList></PostList>
-                    <Parameters></Parameters>
-                </div>
-            </main>
-        )
-    }
+
+    // return(
+    //     <main className={styles.main}>
+    //         <div className={styles.centeredContent}>
+    //             <MainMessage></MainMessage>
+    //             <Technologia></Technologia>
+    //         </div>
+    //     </main>
+    // )
+
+    return(
+        <main className={styles.main}>
+            <div className={styles.centeredContentRow}>
+                <PostMain></PostMain>
+            </div>
+        </main>
+    )
+    
 }
 function MainMessage(){
     return (
