@@ -17,6 +17,15 @@ export function PostMain(props: {}){
         setPostArray(foundedPosts)
 
     }, [searchValue])
+    useEffect(()=> {
+        let filteredPosts:  Post[] = posts
+        if (selectedTags.length > 0) {
+            filteredPosts = filteredPosts.filter(post => 
+                selectedTags.some(tagId => post.tags.includes(tagId)))
+        } else{
+            filteredPosts = posts 
+        }
+    }, [selectedTags])
     return(
         <>
             <PostList

@@ -2,7 +2,7 @@ import pstyles from './css/postParameters.module.css'
 import LoupeIcon from '../../assets/svg/loupe.svg';
 import TagIcon from '../../assets/svg/Tag.svg';
 import LikeIcon from '../../assets/svg/Like.svg'
-import { tags } from './PostList';
+import { Post, posts, tags } from './PostList';
 import unfilledCheckbox from '../../assets/svg/unfilledcheckbox.svg'
 import filledCheckbox from '../../assets/svg/filledcheckbox.svg'
 import radioButtonIcon from '../../assets/svg/radio.svg'
@@ -21,7 +21,7 @@ export function DisplayTags(props: IDisplayTags){
     <div 
         className={pstyles.TagDiv}
         onClick={() => onToggle(id)}
-        >
+    >
         <input className={pstyles.displaynone} type="checkbox" name="" id={`tagcheck_${id}`} checked={isSelected} />
         <img
             src={isSelected ? filledCheckbox : unfilledCheckbox} 
@@ -42,9 +42,15 @@ interface IParameters {
 
 
 export function Parameters(props: IParameters){
-    useEffect(()=> {
-        console.log(props.selectedTags)
-    }, [props.selectedTags])
+    // useEffect(()=> {
+    //     let filteredPosts:  Post[] = posts
+    //     if (props.selectedTags.length > 0) {
+    //         filteredPosts = filteredPosts.filter(post => 
+    //             props.selectedTags.some(tagId => post.tags.includes(tagId)))
+    //     } else{
+    //         filteredPosts = posts 
+    //     }
+    // }, [props.selectedTags])
     const toggleTag = (tagId: number) => {
         if (props.selectedTags.includes(tagId)) {
             props.setSelectedTags(props.selectedTags.filter(id => id !== tagId))
