@@ -13,7 +13,7 @@ export interface Post{
     title: string,
     shortDescription: string,
     image: string,
-    tags: string[],
+    tags: number[],
     likes?: string
 }
 export interface PostStr{
@@ -48,7 +48,7 @@ export const posts: Post[] = [
         title:'Cologne Boulevard at night',
         shortDescription: 'Cologne Boulevard is a boulevard in the center of Dnipro city, running between Dmitry Yavornytsky Avenue and Taras Shevchenko Street. The boulevard marks the border between the Shevchenko and Soborny districts of the city. It was created in 2004 by separating it from Ispolkomovskaya Street.',
         image: '123',
-        tags: ['idk', 'lol']
+        tags: [1, 2]
     }
 ]
 interface IPostList{
@@ -74,13 +74,23 @@ export function PostList(props: IPostList){
             <div>
                 {postArray.map(
                     post => {
+                        let postTags: string[] = [ ]
+                        post.tags.forEach(
+                            (ptag) => {
+                                tags.forEach(gtag => {
+                                    if(gtag.id == ptag){
+                                        postTags = [...postTags, gtag.title]
+                                    }
+                                })
+                            }
+                        )
                         return <PostCard 
                         
-                        key={post.id}
-                        title = {post.title}
-                        shortDescription={post.shortDescription}
-                        image={post.image}
-                        tags={post.tags.join(', ')}></PostCard>
+                            key={post.id}
+                            title = {post.title}
+                            shortDescription={post.shortDescription}
+                            image={post.image}
+                            tags={postTags.join(', ')}></PostCard>
                     }
                 )}
             </div>

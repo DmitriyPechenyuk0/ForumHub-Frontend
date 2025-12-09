@@ -6,6 +6,7 @@ import { tags } from './PostList';
 import unfilledCheckbox from '../../assets/svg/unfilledcheckbox.svg'
 import filledCheckbox from '../../assets/svg/filledcheckbox.svg'
 import radioButtonIcon from '../../assets/svg/radio.svg'
+import { useEffect } from 'react';
 
 interface IDisplayTags{
     id: number
@@ -41,6 +42,9 @@ interface IParameters {
 
 
 export function Parameters(props: IParameters){
+    useEffect(()=> {
+        console.log(props.selectedTags)
+    }, [props.selectedTags])
     const toggleTag = (tagId: number) => {
         if (props.selectedTags.includes(tagId)) {
             props.setSelectedTags(props.selectedTags.filter(id => id !== tagId))
