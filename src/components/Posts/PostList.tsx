@@ -14,14 +14,14 @@ export interface Post{
     shortDescription: string,
     image: string,
     tags: number[],
-    likes?: string
+    likes?: number
 }
 export interface PostStr{
     title: string,
     shortDescription: string,
     image: string,
     tags: string,
-    likes?: string
+    likes?: number
 }
 export const tags: ITag[] = [
     { id: 1, title: 'JavaScript'},
@@ -48,7 +48,8 @@ export const posts: Post[] = [
         title:'Cologne Boulevard at night',
         shortDescription: 'Cologne Boulevard is a boulevard in the center of Dnipro city, running between Dmitry Yavornytsky Avenue and Taras Shevchenko Street. The boulevard marks the border between the Shevchenko and Soborny districts of the city. It was created in 2004 by separating it from Ispolkomovskaya Street.',
         image: '123',
-        tags: [1, 2]
+        tags: [1, 2],
+        likes: 41
     }
 ]
 interface IPostList{
@@ -90,7 +91,9 @@ export function PostList(props: IPostList){
                             title = {post.title}
                             shortDescription={post.shortDescription}
                             image={post.image}
-                            tags={postTags.join(', ')}></PostCard>
+                            tags={postTags.join(', ')}
+                            likes={post.likes}
+                            ></PostCard>
                     }
                 )}
             </div>

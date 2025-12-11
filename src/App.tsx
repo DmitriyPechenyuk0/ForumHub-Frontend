@@ -1,14 +1,22 @@
-import { Header } from './components/header/Header'
-import { Main } from './components/main/Main'
-import { Footer } from './components/footer/Footer'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Layout } from './components/layout/layout';
+import { HomePage } from './pages/home/HomePage';
+import { PostPage } from './pages/posts/PostsPage';
 
 export function App() {
     return (
-        <>
-            <Header></Header>
-            <Main></Main>
-            <Footer></Footer>
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Layout/>}>
+                    <Route path='/' element={<HomePage/>}></Route>
+                    <Route path='/posts' element={<PostPage/>}></Route>
+                </Route>
+                {/* <Route path='/user' element={<AuthLayout/>}>
+                    <Route path='/login' element={<LoginPage/>}></Route>
+                    <Route path='/register' element={<RegisterPage/>}></Route>
+                </Route> */}
+            </Routes>
+        </BrowserRouter>
     )
 }
 
