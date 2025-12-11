@@ -1,23 +1,23 @@
-.listOfPosts{
-    display: flex;
-    width: 700px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    flex-shrink: 0;
-    align-self: stretch;
-    overflow-y: auto;
-    max-height: 100%;
+.listOfPosts {
+	display: flex;
+	width: 700px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	flex-shrink: 0;
+	align-self: stretch;
+	overflow-y: auto;
+	max-height: 100%;
 }
-.listOfPosts::-webkit-scrollbar{
-    display: none;
+.listOfPosts::-webkit-scrollbar {
+	display: none;
 }
-.listOfPosts::-webkit-scrollbar-button{
-    display: none;
+.listOfPosts::-webkit-scrollbar-button {
+	display: none;
 }
-.listOfPosts::-webkit-scrollbar-corner{
-    display: none;
+.listOfPosts::-webkit-scrollbar-corner {
+	display: none;
 }
-.listOfPosts::-webkit-scrollbar-track{
-    display: none;
+.listOfPosts::-webkit-scrollbar-track {
+	display: none;
 }

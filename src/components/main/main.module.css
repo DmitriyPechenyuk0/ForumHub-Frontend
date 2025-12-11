@@ -1,150 +1,150 @@
-.main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex: 1 0 0;
-    align-self: stretch;
-    width: 100vw;
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	flex: 1 0 0;
+	align-self: stretch;
+	width: 100vw;
 }
-.centeredContent{
-    display: flex;
-    width: 1096px;
-    padding: 10px 0;
-    flex-direction: column;
-    align-items: start;
-    gap: 10px;
-    flex: 1 0 0;
+.centeredContent {
+	display: flex;
+	width: 1096px;
+	padding: 10px 0;
+	flex-direction: column;
+	align-items: start;
+	gap: 10px;
+	flex: 1 0 0;
 }
-.centeredContentRow{
-    display: flex;
-    width: 1096px;
-    padding: 10px 0;
-    flex-direction: row;
-    align-items: start;
-    gap: 10px;
-    flex: 1 0 0;
+.centeredContentRow {
+	display: flex;
+	width: 1096px;
+	padding: 10px 0;
+	flex-direction: row;
+	align-items: start;
+	gap: 10px;
+	flex: 1 0 0;
 }
-.ParamsSide{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 6px;
+.ParamsSide {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	gap: 6px;
 }
-.mainMessage{
-    display: flex;
-    padding: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    align-self: stretch;
-    border-radius: 8px;
-    border: 1px solid #27272A;
-    background: #1A1A2E;
+.mainMessage {
+	display: flex;
+	padding: 10px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	align-self: stretch;
+	border-radius: 8px;
+	border: 1px solid #27272a;
+	background: #1a1a2e;
 }
 .mainMessage p {
-    align-self: stretch;
-    color: #E4E4E7;
-    font-family: Ubuntu;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 151.921%;
-    letter-spacing: 1px;
+	align-self: stretch;
+	color: #e4e4e7;
+	font-family: Ubuntu;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 151.921%;
+	letter-spacing: 1px;
 }
-.technologia{
-    display: flex;
-    height: 300px;
-    min-height: 300px;
-    padding: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    align-self: stretch;
-    border-radius: 8px;
-    border: 1px solid #27272A;
-    background: #1A1A2E;
+.technologia {
+	display: flex;
+	height: 300px;
+	min-height: 300px;
+	padding: 10px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	align-self: stretch;
+	border-radius: 8px;
+	border: 1px solid #27272a;
+	background: #1a1a2e;
 }
-.technologia > p{
-    align-self: stretch;
-    color: #A1A1AA;
-    font-family: Ubuntu;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
-    letter-spacing: 1.05px;
+.technologia > p {
+	align-self: stretch;
+	color: #a1a1aa;
+	font-family: Ubuntu;
+	font-size: 21px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 130%;
+	letter-spacing: 1.05px;
 }
-.bothSidesTech{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex: 1 0 0;
-    align-self: stretch;
+.bothSidesTech {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	flex: 1 0 0;
+	align-self: stretch;
 }
-.frontEnd{
-    display: flex;
-    padding: 5px 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    flex: 1 0 0;
-    align-self: stretch;
-    border-radius: 4px;
-    border: 1px solid #52525B;
+.frontEnd {
+	display: flex;
+	padding: 5px 10px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	flex: 1 0 0;
+	align-self: stretch;
+	border-radius: 4px;
+	border: 1px solid #52525b;
 }
-.backEnd{
-    display: flex;
-    padding: 5px 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    flex: 1 0 0;
-    align-self: stretch;
-    border-radius: 4px;
-    border: 1px solid #52525B;
+.backEnd {
+	display: flex;
+	padding: 5px 10px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	flex: 1 0 0;
+	align-self: stretch;
+	border-radius: 4px;
+	border: 1px solid #52525b;
 }
-.frontEnd > p:first-child{
-    color: #E4E4E7;
-    font-family: Ubuntu;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 155%;
-    letter-spacing: 1.05px;
+.frontEnd > p:first-child {
+	color: #e4e4e7;
+	font-family: Ubuntu;
+	font-size: 21px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 155%;
+	letter-spacing: 1.05px;
 }
-.backEnd > p:first-child{
-    color: #E4E4E7;
-    font-family: Ubuntu;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 155%;
-    letter-spacing: 1.05px;
+.backEnd > p:first-child {
+	color: #e4e4e7;
+	font-family: Ubuntu;
+	font-size: 21px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 155%;
+	letter-spacing: 1.05px;
 }
-.frontEnd > p:not(:first-child){
-    color: #E4E4E7;
-    font-family: Ubuntu;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
-    letter-spacing: 1.05px;
+.frontEnd > p:not(:first-child) {
+	color: #e4e4e7;
+	font-family: Ubuntu;
+	font-size: 21px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 100%;
+	letter-spacing: 1.05px;
 }
-.backEnd > p:not(:first-child){
-    color: #E4E4E7;
-    font-family: Ubuntu;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
-    letter-spacing: 1.05px;
+.backEnd > p:not(:first-child) {
+	color: #e4e4e7;
+	font-family: Ubuntu;
+	font-size: 21px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 100%;
+	letter-spacing: 1.05px;
 }
-.backEnd > p:not(:first-child) > span{
-    color: #A1A1AA;
+.backEnd > p:not(:first-child) > span {
+	color: #a1a1aa;
 }
-.frontEnd > p:not(:first-child) > span{
-    color: #A1A1AA;
+.frontEnd > p:not(:first-child) > span {
+	color: #a1a1aa;
 }
