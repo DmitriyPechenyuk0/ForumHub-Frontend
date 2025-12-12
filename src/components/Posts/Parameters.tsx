@@ -6,7 +6,7 @@ import { Post, posts, tags } from "./PostList";
 import unfilledCheckbox from "../../assets/svg/unfilledcheckbox.svg";
 import filledCheckbox from "../../assets/svg/filledcheckbox.svg";
 import radioButtonIcon from "../../assets/svg/radio.svg";
-import raduButtonSelectedIcon from '../../assets/svg/radioselected.svg'
+import raduButtonSelectedIcon from "../../assets/svg/radioselected.svg";
 import { useEffect } from "react";
 
 interface IDisplayTags {
@@ -51,12 +51,12 @@ export function Parameters(props: IParameters) {
 				props.selectedTags.filter((id) => id !== tagId),
 			);
 		} else {
-			props.setSelectedTags([...props.selectedTags, tagId])
+			props.setSelectedTags([...props.selectedTags, tagId]);
 		}
 	};
 	const handleLikesFilter = (value: number) => {
-		props.setLikesMinimumValue(value)
-	}
+		props.setLikesMinimumValue(value);
+	};
 	return (
 		<div className={pstyles.ParamsSide}>
 			<div className={pstyles.mainParametersDiv}>
@@ -113,20 +113,56 @@ export function Parameters(props: IParameters) {
 						<p>Likes</p>
 					</div>
 					<div className={pstyles.likesDivParams}>
-						<div className={pstyles.likeDiv} onClick={() => handleLikesFilter(0)}>
-							<img src={props.likesMinimumValue === 0 ? raduButtonSelectedIcon : radioButtonIcon}  />
+						<div
+							className={pstyles.likeDiv}
+							onClick={() => handleLikesFilter(0)}
+						>
+							<img
+								src={
+									props.likesMinimumValue === 0
+										? raduButtonSelectedIcon
+										: radioButtonIcon
+								}
+							/>
 							<p>Less than 0</p>
 						</div>
-						<div className={pstyles.likeDiv} onClick={() => handleLikesFilter(1)}>
-							<img src={props.likesMinimumValue === 1 ? raduButtonSelectedIcon : radioButtonIcon} />
+						<div
+							className={pstyles.likeDiv}
+							onClick={() => handleLikesFilter(1)}
+						>
+							<img
+								src={
+									props.likesMinimumValue === 1
+										? raduButtonSelectedIcon
+										: radioButtonIcon
+								}
+							/>
 							<p>Greater than 0</p>
 						</div>
-						<div className={pstyles.likeDiv} onClick={() => handleLikesFilter(50)}>
-							<img src={props.likesMinimumValue === 50 ? raduButtonSelectedIcon : radioButtonIcon} />
+						<div
+							className={pstyles.likeDiv}
+							onClick={() => handleLikesFilter(50)}
+						>
+							<img
+								src={
+									props.likesMinimumValue === 50
+										? raduButtonSelectedIcon
+										: radioButtonIcon
+								}
+							/>
 							<p>Greater than 50</p>
 						</div>
-						<div className={pstyles.likeDiv} onClick={() => handleLikesFilter(100)}>
-							<img src={props.likesMinimumValue === 100 ? raduButtonSelectedIcon : radioButtonIcon} />
+						<div
+							className={pstyles.likeDiv}
+							onClick={() => handleLikesFilter(100)}
+						>
+							<img
+								src={
+									props.likesMinimumValue === 100
+										? raduButtonSelectedIcon
+										: radioButtonIcon
+								}
+							/>
 							<p>Greater than 100</p>
 						</div>
 					</div>

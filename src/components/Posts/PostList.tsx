@@ -53,19 +53,19 @@ export const posts: Post[] = [
 	},
 ];
 interface IPostList {
-	postArray: Post[]
+	postArray: Post[];
 }
 
-export function PostList( { postArray }: IPostList) {
+export function PostList({ postArray }: IPostList) {
 	return (
 		<div className={styles.listOfPosts}>
 			<div>
 				{postArray.map((post) => {
-					let postTags: string[] = []
+					let postTags: string[] = [];
 					post.tags.forEach((ptag) => {
 						tags.forEach((gtag) => {
 							if (gtag.id == ptag) {
-								postTags = [...postTags, gtag.title]
+								postTags = [...postTags, gtag.title];
 							}
 						});
 					});
