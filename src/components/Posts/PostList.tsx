@@ -53,32 +53,19 @@ export const posts: Post[] = [
 	},
 ];
 interface IPostList {
-	searchValue: string;
-	selectedTags: number[];
-	likesMinimumValue: number;
+	postArray: Post[]
 }
 
-export function PostList(props: IPostList) {
-	const [postArray, setPostArray] = useState<Post[]>(posts);
-
-	useEffect(() => {
-		const foundedPosts = posts.filter((post) => {
-			return post.title
-				.toLowerCase()
-				.includes(props.searchValue.toLowerCase());
-		});
-
-		setPostArray(foundedPosts);
-	}, [props.searchValue]);
+export function PostList( { postArray }: IPostList) {
 	return (
 		<div className={styles.listOfPosts}>
 			<div>
 				{postArray.map((post) => {
-					let postTags: string[] = [];
+					let postTags: string[] = []
 					post.tags.forEach((ptag) => {
 						tags.forEach((gtag) => {
 							if (gtag.id == ptag) {
-								postTags = [...postTags, gtag.title];
+								postTags = [...postTags, gtag.title]
 							}
 						});
 					});

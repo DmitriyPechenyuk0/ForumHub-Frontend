@@ -206,3 +206,11 @@
 .displaynone {
 	display: none;
 }
+.likeDiv > p {
+	color: #A1A1AA;
+	font-family: Ubuntu;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

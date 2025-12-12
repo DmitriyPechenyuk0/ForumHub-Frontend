@@ -10,29 +10,28 @@ export function PostMain(props: {}) {
 	const [tagsArray, setTagsArray] = useState<{}[]>(tags);
 
 	useEffect(() => {
-		const foundedPosts = posts.filter((post) => {
-			return post.title.toLowerCase().includes(searchValue.toLowerCase());
-		});
-		const newFilteredPosts = foundedPosts;
-		setPostArray(foundedPosts);
-	}, [searchValue]);
-	useEffect(() => {
-		let filteredPosts: Post[] = posts;
+		let filteredPosts: Post[] = posts
+
+		if (searchValue.trim()) {
+			filteredPosts = filteredPosts.filter((post) =>
+				post.title.toLowerCase().includes(searchValue.toLowerCase())
+			)
+		}
 		if (selectedTags.length > 0) {
 			filteredPosts = filteredPosts.filter((post) =>
-				selectedTags.some((tagId) => post.tags.includes(tagId)),
-			);
-		} else {
-			filteredPosts = posts;
+				selectedTags.some((tagId) => post.tags.includes(tagId))
+			)
 		}
-	}, [selectedTags]);
+		if (likesMinimumValue > 0) {
+			filteredPosts = filteredPosts.filter(
+				(post) => (post.likes || 0) >= likesMinimumValue
+			)
+		}
+		setPostArray(filteredPosts)
+	}, [searchValue, selectedTags, likesMinimumValue]);
 	return (
 		<>
-			<PostList
-				searchValue={searchValue}
-				selectedTags={selectedTags}
-				likesMinimumValue={likesMinimumValue}
-			></PostList>
+			<PostList postArray={postArray}></PostList>
 			<Parameters
 				searchValue={searchValue}
 				setSearchValue={setSearchValue}
