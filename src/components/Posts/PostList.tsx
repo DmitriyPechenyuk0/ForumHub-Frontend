@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./css/postList.module.css";
 import { PostCard } from "./PostCard";
 
-interface ITag {
+export interface ITag {
 	id: number;
 	title: string;
 }
@@ -31,14 +31,6 @@ export const tags: ITag[] = [
 	{ id: 6, title: "Kotlin" },
 	{ id: 7, title: "Bash" },
 	{ id: 8, title: "C++" },
-	{ id: 9, title: "JavaScript" },
-	{ id: 10, title: "idk" },
-	{ id: 11, title: "Ruby" },
-	{ id: 12, title: "C#" },
-	{ id: 13, title: "HolyC" },
-	{ id: 14, title: "Kotlin" },
-	{ id: 15, title: "Bash" },
-	{ id: 16, title: "C++" },
 ];
 
 export const posts: Post[] = [

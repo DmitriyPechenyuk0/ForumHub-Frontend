@@ -2,12 +2,12 @@ import pstyles from "./css/postParameters.module.css";
 import LoupeIcon from "../../assets/svg/loupe.svg";
 import TagIcon from "../../assets/svg/Tag.svg";
 import LikeIcon from "../../assets/svg/Like.svg";
-import { Post, posts, tags } from "./PostList";
+import { Post, posts, tags, ITag } from "./PostList";
 import unfilledCheckbox from "../../assets/svg/unfilledcheckbox.svg";
 import filledCheckbox from "../../assets/svg/filledcheckbox.svg";
 import radioButtonIcon from "../../assets/svg/radio.svg";
 import raduButtonSelectedIcon from "../../assets/svg/radioselected.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface IDisplayTags {
 	id: number;
@@ -45,6 +45,20 @@ interface IParameters {
 }
 
 export function Parameters(props: IParameters) {
+	const [tagSearchValue, setTagSearchValue] = useState<string>("");
+	const [filteredTags, setFilteredTags] = useState<ITag[]>(tags);
+
+	useEffect(() => {
+		if (tagSearchValue.trim()) {
+			const filtered = tags.filter((tag) =>
+				tag.title.toLowerCase().includes(tagSearchValue.toLowerCase()),
+			);
+			setFilteredTags(filtered);
+		} else {
+			setFilteredTags(tags);
+		}
+	}, [tagSearchValue]);
+
 	const toggleTag = (tagId: number) => {
 		if (props.selectedTags.includes(tagId)) {
 			props.setSelectedTags(
@@ -84,27 +98,34 @@ export function Parameters(props: IParameters) {
 								className={pstyles.smallLoupe}
 								src={LoupeIcon}
 							/>
-							<input type="text" />
+							<input
+								type="text"
+								placeholder="Search tag"
+								onChange={(e) =>
+									setTagSearchValue(e.target.value)
+								}
+								value={tagSearchValue}
+							/>
 						</div>
 					</div>
 					<div className={pstyles.TagsDiv}>
-						{tags.map((tag) => {
-							return (
-								<div>
-									{
-										<DisplayTags
-											key={tag.id}
-											id={tag.id}
-											title={tag.title}
-											isSelected={props.selectedTags.includes(
-												tag.id,
-											)}
-											onToggle={toggleTag}
-										/>
-									}
-								</div>
-							);
-						})}
+						{filteredTags.length > 0 ? (
+							filteredTags.map((tag) => (
+								<DisplayTags
+									key={tag.id}
+									id={tag.id}
+									title={tag.title}
+									isSelected={props.selectedTags.includes(
+										tag.id,
+									)}
+									onToggle={toggleTag}
+								/>
+							))
+						) : (
+							<p className={pstyles.noTagsMessage}>
+								No tags found
+							</p>
+						)}
 					</div>
 				</div>
 				<div className={pstyles.likesDiv}>

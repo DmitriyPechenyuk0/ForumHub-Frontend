@@ -214,3 +214,13 @@
 	font-weight: 400;
 	line-height: normal;
 }
+.noTagsMessage {
+	display: flex;
+	color: #a1a1aa;
+	font-family: Ubuntu;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	padding-left: 10px;
+}
