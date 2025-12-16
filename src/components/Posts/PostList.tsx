@@ -1,27 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./css/postList.module.css";
 import { PostCard } from "./PostCard";
+import { IPostList, ITag, Post } from "../../shared/types";
 
-export interface ITag {
-	id: number;
-	title: string;
-}
-
-export interface Post {
-	id: number;
-	title: string;
-	shortDescription: string;
-	image: string;
-	tags: number[];
-	likes?: number;
-}
-export interface PostStr {
-	title: string;
-	shortDescription: string;
-	image: string;
-	tags: string;
-	likes?: number;
-}
 export const tags: ITag[] = [
 	{ id: 1, title: "JavaScript" },
 	{ id: 2, title: "idk" },
@@ -44,9 +25,6 @@ export const posts: Post[] = [
 		likes: 41,
 	},
 ];
-interface IPostList {
-	postArray: Post[];
-}
 
 export function PostList({ postArray }: IPostList) {
 	return (

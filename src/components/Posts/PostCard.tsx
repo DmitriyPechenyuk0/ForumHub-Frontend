@@ -1,14 +1,13 @@
+import { ICONS } from "../../shared";
 import styles from "./css/postCard.module.css";
-import { Post, PostStr } from "./PostList";
-import TagIcon from "../../assets/svg/Tag.svg";
-import LikeIcon from "../../assets/svg/Like.svg";
-import PostIcon from "../../assets/svg/Dnipro.svg";
+import { Post, PostStr } from "../../shared/types";
+
 
 export function PostCard(props: PostStr) {
 	return (
 		<div className={styles.postCard}>
 			<div className={styles.imageAndTextDiv}>
-				<img src={PostIcon} />
+				<ICONS.Dnipro />
 				<div>
 					<p className={styles.headP}>{props.title}</p>
 					<p className={styles.descP}>{props.shortDescription}</p>
@@ -16,11 +15,11 @@ export function PostCard(props: PostStr) {
 			</div>
 			<div className={styles.tagAndLikesDiv}>
 				<div className={styles.tagsDiv}>
-					<img src={TagIcon} />
+					<ICONS.Tag />
 					<p className={styles.tagsP}>{props.tags}</p>
 				</div>
 				<div className={styles.likesDiv}>
-					<img src={LikeIcon} />
+					<ICONS.Like />
 					<p>{props.likes}</p>
 				</div>
 			</div>

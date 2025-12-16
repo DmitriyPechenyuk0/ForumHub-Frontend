@@ -1,9 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Layout } from "./components/layout/layout";
-import { HomePage } from "./pages/home/HomePage";
-import { PostPage } from "./pages/posts/PostsPage";
 
-export function App() {
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout } from "./layout/layout";
+import { HomePage } from "../pages/home";
+import { PostPage } from "../pages/posts";
+
+export function AppRoutes() {
 	return (
 		<BrowserRouter>
 			<Routes>

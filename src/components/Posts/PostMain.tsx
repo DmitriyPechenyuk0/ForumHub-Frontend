@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Parameters } from "./Parameters";
-import { Post, PostList, posts, tags } from "./PostList";
+import { PostList, posts, tags } from "./PostList";
+import { Post } from "../../shared/types";
 
 export function PostMain(props: {}) {
 	const [searchValue, setSearchValue] = useState<string>("");

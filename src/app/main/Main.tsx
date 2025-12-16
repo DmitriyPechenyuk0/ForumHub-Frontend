@@ -1,6 +1,6 @@
 import styles from "./main.module.css";
 import { ReactNode } from "react";
-import { PostMain } from "../Posts/PostMain";
+import { PostMain } from "../../components/Posts/PostMain";
 
 interface MainProps {
 	// children - специальный проп(необязательно передавать его как атрибут у компонента),

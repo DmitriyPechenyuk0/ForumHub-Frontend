@@ -1,13 +1,10 @@
 import pstyles from "./css/postParameters.module.css";
-import LoupeIcon from "../../assets/svg/loupe.svg";
-import TagIcon from "../../assets/svg/Tag.svg";
-import LikeIcon from "../../assets/svg/Like.svg";
-import { Post, posts, tags, ITag } from "./PostList";
-import unfilledCheckbox from "../../assets/svg/unfilledcheckbox.svg";
-import filledCheckbox from "../../assets/svg/filledcheckbox.svg";
-import radioButtonIcon from "../../assets/svg/radio.svg";
-import raduButtonSelectedIcon from "../../assets/svg/radioselected.svg";
+import { ICONS } from "../../shared";
 import { useEffect, useState } from "react";
+
+import { ITag } from "../../shared/types";
+
+import { tags } from "./PostList";
 
 interface IDisplayTags {
 	id: number;
@@ -27,10 +24,8 @@ export function DisplayTags(props: IDisplayTags) {
 				id={`tagcheck_${id}`}
 				checked={isSelected}
 			/>
-			<img
-				src={isSelected ? filledCheckbox : unfilledCheckbox}
-				id={`tagimg_${id}`}
-			/>
+			{isSelected ? <ICONS.FilledCheckbox id={`tagimg_${id}`} />: <ICONS.UnfilledCheckbox id={`tagimg_${id}`}/>}
+
 			<p>{title}</p>
 		</div>
 	);
@@ -74,7 +69,7 @@ export function Parameters(props: IParameters) {
 	return (
 		<div className={pstyles.ParamsSide}>
 			<div className={pstyles.mainParametersDiv}>
-				<img src={LoupeIcon} alt="loupe" />
+				<ICONS.Loupe/>
 				<input
 					type="text"
 					placeholder="Enter search query"
@@ -90,14 +85,11 @@ export function Parameters(props: IParameters) {
 				<div className={pstyles.ParamsTagsDiv}>
 					<div className={pstyles.tagsTopBar}>
 						<div>
-							<img src={TagIcon} alt="TagIcon" />
+							<ICONS.Tag/>
 							<p>Tags</p>
 						</div>
 						<div>
-							<img
-								className={pstyles.smallLoupe}
-								src={LoupeIcon}
-							/>
+							<ICONS.Loupe className={pstyles.smallLoupe}/>
 							<input
 								type="text"
 								placeholder="Search tag"
@@ -130,7 +122,7 @@ export function Parameters(props: IParameters) {
 				</div>
 				<div className={pstyles.likesDiv}>
 					<div className={pstyles.likesDivTopBar}>
-						<img src={LikeIcon} />
+						<ICONS.Like/>
 						<p>Likes</p>
 					</div>
 					<div className={pstyles.likesDivParams}>
@@ -138,52 +130,44 @@ export function Parameters(props: IParameters) {
 							className={pstyles.likeDiv}
 							onClick={() => handleLikesFilter(0)}
 						>
-							<img
-								src={
-									props.likesMinimumValue === 0
-										? raduButtonSelectedIcon
-										: radioButtonIcon
-								}
-							/>
+						{
+							props.likesMinimumValue === 0
+									? <ICONS.RadioSelected/>
+									: <ICONS.Radio/>
+						}
 							<p>Less than 0</p>
 						</div>
 						<div
 							className={pstyles.likeDiv}
 							onClick={() => handleLikesFilter(1)}
 						>
-							<img
-								src={
-									props.likesMinimumValue === 1
-										? raduButtonSelectedIcon
-										: radioButtonIcon
-								}
-							/>
+						{
+							props.likesMinimumValue === 1
+									? <ICONS.RadioSelected/>
+									: <ICONS.Radio/>
+						}
 							<p>Greater than 0</p>
 						</div>
 						<div
 							className={pstyles.likeDiv}
 							onClick={() => handleLikesFilter(50)}
 						>
-							<img
-								src={
-									props.likesMinimumValue === 50
-										? raduButtonSelectedIcon
-										: radioButtonIcon
-								}
-							/>
+						{
+							props.likesMinimumValue === 50
+									? <ICONS.RadioSelected/>
+									: <ICONS.Radio/>
+						}
 							<p>Greater than 50</p>
 						</div>
 						<div
 							className={pstyles.likeDiv}
 							onClick={() => handleLikesFilter(100)}
 						>
-							<img
-								src={
-									props.likesMinimumValue === 100
-										? raduButtonSelectedIcon
-										: radioButtonIcon
-								}
-							/>
+						{
+							props.likesMinimumValue === 100
+									? <ICONS.RadioSelected/>
+									: <ICONS.Radio/>
+						}
 							<p>Greater than 100</p>
 						</div>
 					</div>

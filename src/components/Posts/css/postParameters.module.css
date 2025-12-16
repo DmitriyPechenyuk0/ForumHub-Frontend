@@ -35,7 +35,7 @@
 	font-weight: 500;
 	line-height: normal;
 }
-.mainParametersDiv > img {
+.mainParametersDiv > svg {
 	position: absolute;
 	left: 10px;
 	top: 10px;
@@ -149,7 +149,7 @@
 	font-weight: 400;
 	line-height: normal;
 }
-.TagDiv > img {
+.TagDiv > svg {
 	cursor: pointer;
 }
 .likesDiv {
