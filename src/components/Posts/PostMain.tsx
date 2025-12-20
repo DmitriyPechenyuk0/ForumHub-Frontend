@@ -3,6 +3,7 @@ import { Parameters } from "./Parameters";
 import { PostList } from "./PostList";
 import { href } from "../../shared";
 import { ITag, Post } from "../../shared/types";
+import styles from './css/postList.module.css'
 import axios from 'axios';
 
 export function PostMain() {
@@ -12,31 +13,38 @@ export function PostMain() {
 	
 	const [tagsArray, setTagsArray] = useState<ITag[]>([]);
 	const [tagsLoading, setTagsLoading] = useState(false);
+	const [tagsError, setTagsError] = useState<string | null>(null);
 
 	const [postArray, setPostArray] = useState<Post[] | undefined>(undefined);
 	const [allPosts, setAllPosts] = useState<Post[]>([]);
 	const [postsLoading, setPostsLoading] = useState(false);
-
+	const [postsError, setPostsError] = useState<string | null>(null);
 	useEffect(() => {
 		const getPostsFromBack = async () => {
 			setPostsLoading(true);
+			setPostsError(null);
 			try {
 				const response = await axios.get(`${href}/posts`);
 				console.log('Response data:', response.data)
-				setAllPosts(response.data);
+				setPostsError('Failed to load posts');
+				// setAllPosts(response.data);
 				setPostArray(response.data);
+				
 			} catch (err) {
 				console.log(err)
+				
 			} finally {
 				setPostsLoading(false);
 			}
 		};
 		const getTagsFromBack = async () => {
 			setTagsLoading(true);
+			setTagsError(null);
 			try {
 				const response = await axios.get(`${href}/tags`);
 				console.log('Response data:', response.data);
-				setTagsArray(response.data);
+				setTagsError('Failed to load tags');
+				// setTagsArray(response.data);
 			} catch (err) {
 				console.log(err);
 			} finally {
@@ -75,9 +83,14 @@ export function PostMain() {
 	return (
 		<>
 			{postsLoading || !postArray ? (
-				<PostList preloader={true}></PostList>
-			) : (
-				<PostList postArray={postArray} preloader={false}></PostList>
+				<PostList preloader={true} />)
+				:
+				postsError 
+				? 
+				(<div className={styles.errorMessage}><p>{postsError}</p></div>)
+				: 
+				(
+				<PostList postArray={postArray} preloader={false} />
 			)}
 			<Parameters
 				searchValue={searchValue}

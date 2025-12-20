@@ -21,3 +21,32 @@
 .listOfPosts::-webkit-scrollbar-track {
 	display: none;
 }
+.preloaderpostsDiv{
+	width: 700px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: fit-content;
+}
+.preloaderpostsDiv svg{
+	width: 276px;
+	height: 153px;
+}
+.errorMessage{
+	width: 700px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: fit-content;
+	background: #1A1A2E;
+	height: 60px;
+	border: 1px solid #27272A;
+	border-radius: 8px;
+	padding: 10px;
+}
+.errorMessage p{
+	font-size: 24px;
+	color: #E4E4E7;
+}
