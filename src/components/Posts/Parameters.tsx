@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 import { ITag } from "../../shared/types";
 
-import { tags } from "./PostList";
-
 interface IDisplayTags {
 	id: number;
 	title: string;
@@ -37,22 +35,23 @@ interface IParameters {
 	setSelectedTags: (tags: number[]) => void;
 	likesMinimumValue: number;
 	setLikesMinimumValue: (value: number) => void;
+	tagsArray: ITag[];
+	tagsLoading: boolean;
 }
 
 export function Parameters(props: IParameters) {
 	const [tagSearchValue, setTagSearchValue] = useState<string>("");
-	const [filteredTags, setFilteredTags] = useState<ITag[]>(tags);
+	const [filteredTags, setFilteredTags] = useState<ITag[]>([]);
 
 	useEffect(() => {
 		if (tagSearchValue.trim()) {
-			const filtered = tags.filter((tag) =>
-				tag.title.toLowerCase().includes(tagSearchValue.toLowerCase()),
+			const filtered = props.tagsArray.filter((tag) => tag.tag.toLowerCase().includes(tagSearchValue.toLowerCase())
 			);
 			setFilteredTags(filtered);
 		} else {
-			setFilteredTags(tags);
+			setFilteredTags(props.tagsArray);
 		}
-	}, [tagSearchValue]);
+	}, [tagSearchValue, props.tagsArray]);
 
 	const toggleTag = (tagId: number) => {
 		if (props.selectedTags.includes(tagId)) {
@@ -106,7 +105,7 @@ export function Parameters(props: IParameters) {
 								<DisplayTags
 									key={tag.id}
 									id={tag.id}
-									title={tag.title}
+									title={tag.tag}
 									isSelected={props.selectedTags.includes(
 										tag.id,
 									)}

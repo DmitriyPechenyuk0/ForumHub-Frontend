@@ -2,54 +2,32 @@ import { useState, useEffect } from "react";
 import styles from "./css/postList.module.css";
 import { PostCard } from "./PostCard";
 import { IPostList, ITag, Post } from "../../shared/types";
+import { ICONS } from "../../shared";
 
-export const tags: ITag[] = [
-	{ id: 1, title: "JavaScript" },
-	{ id: 2, title: "idk" },
-	{ id: 3, title: "Ruby" },
-	{ id: 4, title: "C#" },
-	{ id: 5, title: "HolyC" },
-	{ id: 6, title: "Kotlin" },
-	{ id: 7, title: "Bash" },
-	{ id: 8, title: "C++" },
-];
-
-export const posts: Post[] = [
-	{
-		id: 1,
-		title: "Cologne Boulevard at night",
-		shortDescription:
-			"Cologne Boulevard is a boulevard in the center of Dnipro city, running between Dmitry Yavornytsky Avenue and Taras Shevchenko Street. The boulevard marks the border between the Shevchenko and Soborny districts of the city. It was created in 2004 by separating it from Ispolkomovskaya Street.",
-		image: "123",
-		tags: [1, 2],
-		likes: 41,
-	},
-];
-
-export function PostList({ postArray }: IPostList) {
+export function PostList({ postArray, preloader }: IPostList) {
+	
 	return (
 		<div className={styles.listOfPosts}>
 			<div>
-				{postArray.map((post) => {
-					let postTags: string[] = [];
-					post.tags.forEach((ptag) => {
-						tags.forEach((gtag) => {
-							if (gtag.id == ptag) {
-								postTags = [...postTags, gtag.title];
-							}
-						});
-					});
-					return (
-						<PostCard
-							key={post.id}
-							title={post.title}
-							shortDescription={post.shortDescription}
-							image={post.image}
-							tags={postTags.join(", ")}
-							likes={post.likes}
-						></PostCard>
-					);
-				})}
+				{preloader
+				? 
+				(<div className={styles.preloaderpostsDiv}><ICONS.preloader></ICONS.preloader></div>)
+				: (
+					postArray?.map((post) => {
+						let postTags: string[] = post.tags?.map((tagRelation) => tagRelation.tag.tag) || [];
+
+						return (
+							<PostCard
+								key={post.id}
+								title={post.title}
+								shortDescription={post.description}
+								image={post.image}
+								tags={postTags.join(", ")}
+								likes={post.likes}
+							></PostCard>
+						);
+					})
+				)}
 			</div>
 		</div>
 	);

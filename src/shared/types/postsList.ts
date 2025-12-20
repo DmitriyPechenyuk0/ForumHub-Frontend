@@ -1,5 +1,6 @@
 import { Post } from "./post";
 
 export interface IPostList {
-    postArray: Post[];
+    postArray?: Post[];
+    preloader?: boolean
 }

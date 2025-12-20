@@ -11,7 +11,7 @@ import { ReactComponent as Radio } from '../assets/svg/radio.svg'
 import { ReactComponent as Tag } from '../assets/svg/Tag.svg'
 import { ReactComponent as Telegram } from '../assets/svg/telegram.svg'
 import { ReactComponent as UnfilledCheckbox } from '../assets/svg/unfilledcheckbox.svg'
-
+import { ReactComponent as preloader } from '../assets/svg/preloader.svg'
 export const ICONS = {
     ArrowDown,
     Dnipro,
@@ -25,5 +25,6 @@ export const ICONS = {
     Radio,
     Tag,
     Telegram,
-    UnfilledCheckbox
+    UnfilledCheckbox,
+    preloader
 }

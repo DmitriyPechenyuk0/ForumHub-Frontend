@@ -1,8 +1,10 @@
+import { PostTag } from ".";
+
 export interface Post {
 	id: number;
 	title: string;
-	shortDescription: string;
+	description: string;
 	image: string;
-	tags: number[];
+	tags: PostTag[];
 	likes?: number;
 }

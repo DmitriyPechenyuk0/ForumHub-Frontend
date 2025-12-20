@@ -1,17 +1,57 @@
 import { useEffect, useState } from "react";
 import { Parameters } from "./Parameters";
-import { PostList, posts, tags } from "./PostList";
-import { Post } from "../../shared/types";
+import { PostList } from "./PostList";
+import { href } from "../../shared";
+import { ITag, Post } from "../../shared/types";
+import axios from 'axios';
 
-export function PostMain(props: {}) {
+export function PostMain() {
 	const [searchValue, setSearchValue] = useState<string>("");
 	const [selectedTags, setSelectedTags] = useState<number[]>([]);
 	const [likesMinimumValue, setLikesMinimumValue] = useState<number>(0);
-	const [postArray, setPostArray] = useState<Post[]>(posts);
-	const [tagsArray, setTagsArray] = useState<{}[]>(tags);
+	
+	const [tagsArray, setTagsArray] = useState<ITag[]>([]);
+	const [tagsLoading, setTagsLoading] = useState(false);
+
+	const [postArray, setPostArray] = useState<Post[] | undefined>(undefined);
+	const [allPosts, setAllPosts] = useState<Post[]>([]);
+	const [postsLoading, setPostsLoading] = useState(false);
 
 	useEffect(() => {
-		let filteredPosts: Post[] = posts;
+		const getPostsFromBack = async () => {
+			setPostsLoading(true);
+			try {
+				const response = await axios.get(`${href}/posts`);
+				console.log('Response data:', response.data)
+				setAllPosts(response.data);
+				setPostArray(response.data);
+			} catch (err) {
+				console.log(err)
+			} finally {
+				setPostsLoading(false);
+			}
+		};
+		const getTagsFromBack = async () => {
+			setTagsLoading(true);
+			try {
+				const response = await axios.get(`${href}/tags`);
+				console.log('Response data:', response.data);
+				setTagsArray(response.data);
+			} catch (err) {
+				console.log(err);
+			} finally {
+				setTagsLoading(false);
+			}
+		};
+
+		
+		getPostsFromBack();
+		getTagsFromBack();
+	}, []);
+	useEffect(() => {
+		if (allPosts.length === 0) return;
+
+		let filteredPosts: Post[] = allPosts;
 
 		if (searchValue.trim()) {
 			filteredPosts = filteredPosts.filter((post) =>
@@ -20,7 +60,9 @@ export function PostMain(props: {}) {
 		}
 		if (selectedTags.length > 0) {
 			filteredPosts = filteredPosts.filter((post) =>
-				selectedTags.some((tagId) => post.tags.includes(tagId)),
+				selectedTags.some((tagId) => 
+					post.tags.some((tagRelation) => tagRelation.tagId === tagId)
+				)
 			);
 		}
 		if (likesMinimumValue > 0) {
@@ -29,10 +71,14 @@ export function PostMain(props: {}) {
 			);
 		}
 		setPostArray(filteredPosts);
-	}, [searchValue, selectedTags, likesMinimumValue]);
+	}, [searchValue, selectedTags, likesMinimumValue, allPosts]);
 	return (
 		<>
-			<PostList postArray={postArray}></PostList>
+			{postsLoading || !postArray ? (
+				<PostList preloader={true}></PostList>
+			) : (
+				<PostList postArray={postArray} preloader={false}></PostList>
+			)}
 			<Parameters
 				searchValue={searchValue}
 				setSearchValue={setSearchValue}
@@ -40,6 +86,8 @@ export function PostMain(props: {}) {
 				setSelectedTags={setSelectedTags}
 				likesMinimumValue={likesMinimumValue}
 				setLikesMinimumValue={setLikesMinimumValue}
+				tagsArray={tagsArray}
+				tagsLoading={tagsLoading}
 			></Parameters>
 		</>
 	);
